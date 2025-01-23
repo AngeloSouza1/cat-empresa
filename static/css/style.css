@@ -1,0 +1,131 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Container principal */
+.container {
+    max-width: 400px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+/* Cabeçalho */
+h1, h2 {
+    color: #d50000;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #d50000;
+    border: none;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #b00000;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: #555;
+    border: none;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Formulários */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #d50000;
+    box-shadow: 0 0 8px rgba(213, 0, 0, 0.5);
+}
+
+textarea.form-control {
+    resize: none;
+    height: calc(2rem + 2px);
+    border-radius: 8px;
+}
+
+/* Etiquetas do formulário */
+.form-label {
+    font-weight: bold;
+    text-align: left;
+    width: 100%;
+    color: #555;
+}
+
+/* Alinhamento e estilo para ícones e campos */
+.input-group {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    gap: 8px; /* Espaço entre o ícone e o input */
+}
+
+.input-group i {
+    font-size: 20px; /* Tamanho do ícone */
+    color: #555; /* Cor do ícone */
+    line-height: 1; /* Centraliza verticalmente o ícone */
+}
+
+/* Campos de texto */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 8px 12px; /* Espaçamento interno */
+    height: auto; /* Ajuste dinâmico para melhor alinhamento */
+}
+
+/* Espaçamento entre os grupos */
+.input-group:not(:last-child) {
+    margin-bottom: 12px;
+}
+.card-text {
+    text-align: left; /* Alinha todo o conteúdo à esquerda */
+}
