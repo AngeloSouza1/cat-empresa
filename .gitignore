@@ -1,0 +1,38 @@
+# Arquivos e diretórios do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+instance/
+*.pyproj
+*.sublime-project
+*.sublime-workspace
+
+# Configurações de ambiente virtual
+venv/
+.env
+*.env
+*.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.tmp
+
+# Arquivos específicos do Flask
+instance/
+config.py
+config.yaml
+
+# Arquivos de build e cache
+build/
+dist/
+.eggs/
+*.egg-info/
