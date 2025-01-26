@@ -63,7 +63,7 @@ def cadastro(id=None):
                 db.session.rollback()
                 flash(f"Erro ao salvar no banco de dados: {e}", 'danger')  # Mensagem de erro
 
-        return redirect(url_for('clientes'))  # Redireciona para a própria página
+        return redirect(url_for('cadastro'))  # Redireciona para a própria página
 
     return render_template(
         'cadastro.html',
