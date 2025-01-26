@@ -36,7 +36,7 @@ def cadastro(id=None):
         # Recebendo dados do formulário
         nome = request.form['nome']
         email = request.form.get('email')
-        email = email if email else None  # Converte string vazia em None
+        email = email if email else ''  # Converte string vazia em None
         telefone = request.form['telefone']
         rota = request.form['rota']
         descricao = request.form.get('descricao')  # Descrição opcional
