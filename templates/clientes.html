@@ -48,7 +48,7 @@
                     type="text" 
                     name="search" 
                     placeholder="Pesquisar por nome, telefone ou rota" 
-                    class="form-control w-50 mx-auto"
+                    class="form-control w-150 mx-auto"
                 >
             </div>
             <button type="submit" class="btn btn-primary w-50 py-2">Pesquisar</button>
@@ -82,11 +82,22 @@
                         <span class="emoji">📍</span><strong>Rota:</strong> {{ cliente.rota }}<br>
                         <span class="emoji">📝</span><strong>Descrição:</strong> {{ cliente.descricao }}
                     </p>
-                    
                 </div>
+                <!-- Botões de Ações -->
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="/cadastro/{{ cliente.id }}" class="btn btn-warning btn-sm" title="Editar">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <form method="POST" action="/excluir/{{ cliente.id }}" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
+                        <button type="submit" class="btn btn-danger btn-sm" title="Excluir">
+                            <i class="fas fa-trash-alt"></i> Excluir
+                        </button>
+                    </form>
+                </div>                
             </div>
             {% endfor %}
         </div>
+        
         {% else %}
         <div class="alert alert-warning text-center p-3" role="alert">
             Nenhum cliente cadastrado. Por favor, insira novos clientes.
