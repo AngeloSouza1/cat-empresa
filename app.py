@@ -108,13 +108,17 @@ def formatar_telefone(telefone):
 # Filtro Jinja para validar telefone
 @app.template_filter()
 def validar_telefone(telefone):
-    """Valida e retorna o número de telefone apenas com números, incluindo o DDD."""
+    """Valida e retorna o número de telefone com o formato correto para WhatsApp."""
     telefone = ''.join(filter(str.isdigit, telefone))  # Remove caracteres não numéricos
-    if len(telefone) == 10:  # Telefones fixos com DDD
-        return f"{telefone[:2]}{telefone[2:]}"
-    elif len(telefone) == 11:  # Telefones móveis com DDD
-        return f"{telefone[:2]}{telefone[2:]}"
+    
+    # Verifica se o telefone possui 10 ou 11 dígitos
+    if len(telefone) == 10:  # Formato fixo: (XX) XXXX-XXXX
+        return f"55{telefone[:2]}{telefone[2:]}"  # Adiciona o código do Brasil (+55)
+    elif len(telefone) == 11:  # Formato celular: (XX) XXXXX-XXXX
+        return f"55{telefone[:2]}{telefone[2:]}"  # Adiciona o código do Brasil (+55)
+    
     return None  # Retorna None para números inválidos
+
 
 
 
