@@ -68,6 +68,27 @@ def clientes():
 
     return render_template('clientes.html', clientes=clientes)
 
+@app.template_filter()
+def formatar_telefone(telefone):
+    """Aplica uma máscara ao telefone no formato (XX) XXXX-XXXX"""
+    # Remove caracteres não numéricos
+    telefone = ''.join(filter(str.isdigit, telefone))
+    # Aplica a máscara somente se o telefone tiver 10 ou 11 dígitos
+    if len(telefone) == 10:
+        return f"({telefone[:2]}) {telefone[2:6]}-{telefone[6:]}"
+    elif len(telefone) == 11:  # Para números com DDD e dígito adicional
+        return f"({telefone[:2]}) {telefone[2:7]}-{telefone[7:]}"
+    return telefone  # Retorna como está se não tiver 10 ou 11 dígitos
+
+@app.template_filter()
+def validar_telefone(telefone):
+    """Valida o número de telefone no formato esperado."""
+    telefone = ''.join(filter(str.isdigit, telefone))  # Remove caracteres não numéricos
+    if len(telefone) >= 10:  # Telefones válidos têm pelo menos 10 dígitos
+        return telefone
+    return None
+
+
 
 # Inicializa o banco de dados na primeira execução
 if __name__ == '__main__':
