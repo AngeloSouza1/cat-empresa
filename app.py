@@ -94,22 +94,26 @@ def clientes():
 # Filtro Jinja para formatar telefone
 @app.template_filter()
 def formatar_telefone(telefone):
-    """Aplica uma máscara ao telefone no formato (XX) XXXX-XXXX"""
+    """Aplica uma máscara ao telefone no formato (XX) XXXX-XXXX ou (XX) XXXXX-XXXX"""
     telefone = ''.join(filter(str.isdigit, telefone))  # Remove caracteres não numéricos
-    if len(telefone) == 10:
+
+    if len(telefone) == 10:  # Formato com 10 dígitos: (XX) XXXX-XXXX
         return f"({telefone[:2]}) {telefone[2:6]}-{telefone[6:]}"
-    elif len(telefone) == 11:  # Para números com DDD e dígito adicional
+    elif len(telefone) == 11:  # Formato com 11 dígitos: (XX) XXXXX-XXXX
         return f"({telefone[:2]}) {telefone[2:7]}-{telefone[7:]}"
-    return telefone
+    else:
+        return telefone  # Retorna sem máscara se o tamanho for inválido
+
 
 # Filtro Jinja para validar telefone
 @app.template_filter()
 def validar_telefone(telefone):
-    """Valida o número de telefone no formato esperado."""
+    """Valida e retorna o número de telefone no formato numérico sem máscara."""
     telefone = ''.join(filter(str.isdigit, telefone))  # Remove caracteres não numéricos
-    if len(telefone) >= 10:  # Telefones válidos têm pelo menos 10 dígitos
+    if len(telefone) in (10, 11):  # Telefones válidos têm 10 ou 11 dígitos
         return telefone
-    return None
+    return None  # Retorna None para números inválidos
+
 
 # Rota para excluir cliente
 @app.route('/excluir/<int:id>', methods=['POST'])
