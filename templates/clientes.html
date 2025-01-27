@@ -76,7 +76,7 @@
                         >
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        {% endif %}                       
+                        {% endif %}                 
                         <br>
                         <span class="emoji">✉️</span><strong>Email:</strong> {{ cliente.email }}<br>
                         <span class="emoji">📍</span><strong>Rota:</strong> {{ cliente.rota }}<br>
@@ -85,15 +85,31 @@
                 </div>
                 <!-- Botões de Ações -->
                 <div class="card-footer d-flex justify-content-between">
+                    <!-- Botão Editar -->
                     <a href="/cadastro/{{ cliente.id }}" class="btn btn-warning btn-sm" title="Editar">
                         <i class="fas fa-edit"></i> Editar
                     </a>
+                
+                    <!-- Botão WhatsApp -->
+                    {% if cliente.telefone|validar_telefone %}
+                    <a 
+                        href="https://wa.me/{{ cliente.telefone|validar_telefone }}" 
+                        class="btn btn-success btn-sm mx-2" 
+                        target="_blank" 
+                        title="Enviar mensagem no WhatsApp"
+                    >
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    {% endif %}
+                
+                    <!-- Botão Excluir -->
                     <form method="POST" action="/excluir/{{ cliente.id }}" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
                         <button type="submit" class="btn btn-danger btn-sm" title="Excluir">
                             <i class="fas fa-trash-alt"></i> Excluir
                         </button>
                     </form>
-                </div>                
+                </div>
+                        
             </div>
             {% endfor %}
         </div>
